@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Rama::VERSION
   spec.authors       = ["YuheiNakasaka"]
   spec.email         = ["yuhei.nakasaka@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = "rama convert a movie to a sprite image"
+  spec.summary       = "rama convert a movie to a sprite image"
   spec.homepage      = ""
   spec.license       = "MIT"
 
