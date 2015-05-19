@@ -13,13 +13,13 @@ module Rama
       timestamp = Time.now.to_i
       timestamp_image_dir = "/tmp/rama_#{timestamp}"
       Dir::mkdir(timestamp_image_dir,0777)
-      system("ffmpeg -i #{movie_file} -r 12 -s qvga -f image2 #{timestamp_image_dir}/rama-original-%3d.jpg")
-      system("convert -quality 60 #{timestamp_image_dir}/rama-original-*.jpg #{timestamp_image_dir}/rama-converted-%03d.jpg")
+      system("ffmpeg -i #{movie_file} -r 12 -s qvga -f image2 #{timestamp_image_dir}/rama-original-%3d.png")
+      system("convert #{timestamp_image_dir}/rama-original-*.png -quality 30 #{timestamp_image_dir}/rama-converted-%03d.jpg")
       system("convert #{timestamp_image_dir}/rama-converted-*.jpg -append #{result_file}")
 
       # delete all files in directory
       Dir::foreach(timestamp_image_dir) do |file|
-        File.delete(timestamp_image_dir + '/' + file) if (/\.jpg$/ =~ file)
+        File.delete(timestamp_image_dir + '/' + file) if (/(\.jpg|\.png)$/ =~ file)
       end
       Dir::rmdir(timestamp_image_dir)
       say("Rama generated sprite file ~> #{result_file}", :green)
